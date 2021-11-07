@@ -18,8 +18,9 @@ class RSS (commands.Cog):
 
     @commands.command()
     async def rss(self,ctx,url):
-        for i in (reversed(url)):
-            print(ctx.subcommand_passed)
+        rss_dic = feedparser.parse(url)
+        main = rss_dic.entries
+        for i in (reversed(main)):
             await ctx.send(i.title)
             await ctx.send(i.link)
 
