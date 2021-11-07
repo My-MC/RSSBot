@@ -1,6 +1,6 @@
 # RSSBot
 
-## About /　概要
+## About / 概要
 
 Want to receive RSS feeds?　So this Bot can receive RSS feeds easy in discord.
 
