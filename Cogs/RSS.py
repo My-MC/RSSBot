@@ -17,8 +17,9 @@ class RSS (commands.Cog):
         self.last_member = None
 
     @commands.command()
-    async def rss(self,ctx):
-        for i in (reversed(main)):
+    async def rss(self,ctx,url):
+        for i in (reversed(url)):
+            print(ctx.subcommand_passed)
             await ctx.send(i.title)
             await ctx.send(i.link)
 

@@ -10,7 +10,7 @@ handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(me
 logger.addHandler(handler)
 
 # 自分のBOTのtokenの定義
-TOKEN = 'Please type your token'
+TOKEN = 'Please type your bot token here'
 
 # 接続に必要なオブジェクトを生成
 bot = commands.Bot(command_prefix="!")
@@ -24,18 +24,6 @@ async def on_ready():
     print('-'*44)
     print("TOKEN  =  " + TOKEN)
     print('='*44)
-
-# メッセージ受信時に動作する処理
-@bot.event
-async def on_message(message):
-    # メッセージ送信者がBotだった場合は無視する
-    if message.author.bot:
-        return
-    # 「/neko」と発言したら「にゃーん」が返る処理
-    if message.content == '/neko':
-        await message.channel.send('にゃーん')
-
-    await bot.process_commands(message)
 
 bot.load_extension("Cogs.RSS")
 bot.run(TOKEN)
