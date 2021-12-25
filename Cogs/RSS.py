@@ -2,15 +2,6 @@ import discord
 from discord.ext import commands
 import feedparser
 
-# RSS配信用のURL
-URL = 'https://hypixel.net/forums/off-topic.2/-/index.rss'
-
-# 辞書型で取得
-rss_dic = feedparser.parse(URL)
-
-# entriesを摘出
-main = rss_dic.entries
-
 class RSS (commands.Cog):
     def __init__(self , bot):
         self.bot = bot
@@ -21,8 +12,9 @@ class RSS (commands.Cog):
         rss_dic = feedparser.parse(url)
         main = rss_dic.entries
         for i in (reversed(main)):
-            await ctx.send(i.title)
-            await ctx.send(i.link)
+            embed=discord.Embed(title=i.title, description=i.link, color=0x00008b)
+            embed.set_footer(text=i.published)
+            await ctx.send(embed=embed)
 
 def setup(bot):
     return bot.add_cog(RSS(bot))
