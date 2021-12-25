@@ -1,0 +1,6 @@
+#cache
+Cogs/__pycache__
+#log
+Logs/discord.log
+#token
+conf/token.txt
