@@ -1,5 +1,7 @@
 # RSSBot
 
+![GitHub](https://img.shields.io/github/license/My-MC/RSSBot)
+
 ## About / 概要
 
 Want to receive RSS feeds? So this Bot can receive RSS feeds easy in discord.
