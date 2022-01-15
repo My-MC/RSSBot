@@ -2,6 +2,7 @@
 import discord
 from discord.ext import commands
 import logging
+import yaml
 
 #logの設定
 
@@ -12,12 +13,17 @@ handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(me
 logger.addHandler(handler)
 
 #fileの読み書き
-r = open('./conf/token.txt')
-r_str = r.readline()
-r.close()
+with open("./conf/token.yml","r") as f:
+    x = yaml.safe_load(f)
+    if x["token"] == None:
+        ww = input("Didn't set token.Please write here : ")
+        yw = { 'title': 'TOKEN', 'token': f"{ww}"}
+        with open("./conf/token.yml" , "w") as w:
+            yaml.dump(yw, w, encoding='utf-8', allow_unicode=True)
+            TOKEN = ww
+    else:
+        TOKEN = x["token"]
 
-# 自分のBOTのtokenの定義
-TOKEN = r_str
 
 # 接続に必要なオブジェクトを生成
 bot = commands.Bot(command_prefix="!")
@@ -35,5 +41,3 @@ async def on_ready():
 bot.load_extension("Cogs.RSS")
 bot.load_extension("Cogs.about")
 bot.run(TOKEN)
-
-

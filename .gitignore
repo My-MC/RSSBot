@@ -2,5 +2,5 @@
 Cogs/__pycache__
 #log
 Logs/discord.log
-#token
-conf/token.txt
+#コンフィグ
+conf/token.yml
